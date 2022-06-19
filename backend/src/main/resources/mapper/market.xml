@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.MarketMapper">
+
+	<insert id="insertMarket" parameterType="Market">
+		insert ignore into market(marketName, marketKinds, dongCode, dongName, lat, lng)
+		values(#{marketName}, #{marketKinds}, #{dongCode}, #{dongName}, #{lat}, #{lng})
+	</insert>
+	
+	<select id="getMarket" parameterType="string" resultType="Market">
+		select * from market
+		where dongCode = #{dong}
+	</select>
+
+</mapper>

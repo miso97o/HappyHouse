@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.dao.QnaMapper">
+	<!-- 게시글 조회 -->
+	<select id="selectQna" resultType="Qna">
+		select *
+		from qna
+		<where>
+				<if test="word != null and word !=''  ">
+					<choose>
+						<when test=" key == 'qnano' ">
+							qnano = #{word}
+						</when>
+						<when test=" key == 'question' ">
+							question like concat('%',#{word},'%')
+						</when>
+						<when test=" key == 'userid' ">
+							userid like concat('%',#{word},'%')
+						</when>
+					</choose>		
+				</if>
+			</where>
+		order by qnano
+	</select>
+	
+	<select id="getQna" parameterType="Integer" resultType="Qna">
+		select *
+		from qna
+		where qnano = #{qnano}
+	</select>
+	
+	<select id="getCnt" resultType="Integer">
+		select count(*) from qna
+	</select>
+	
+	<insert id="createQna" parameterType="Qna">
+		insert into qna(userid, question, answer)
+		values(#{userid}, #{question}, #{answer})
+	</insert>
+	
+	<update id="updateQna" parameterType="Qna">
+		update qna set question = #{question},
+			answer = #{answer}
+			where qnano = #{qnano}
+	</update>
+	
+	<delete id="deleteQna" parameterType="int">
+		delete from qna where qnano = #{qnano}
+	</delete>
+</mapper>
