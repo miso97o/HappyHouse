@@ -8,7 +8,7 @@
 - 내가 등록한 관심지역의 주변 상권정보와 환경정보
 - 최신 부동산 뉴스
 # 프로젝트 일정
-
+![프로젝트 일정](https://user-images.githubusercontent.com/61226384/175567220-b4e6351f-b925-4e1c-8823-94ac7a27b9a9.png)
 # 개발 환경
 ### BackEnd
 - Java 1.8
