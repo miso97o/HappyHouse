@@ -29,9 +29,9 @@ export default {
       console.log(this.houses);
     },
     displayMarkers() {
-      const infowindow = new kakao.maps.InfoWindow({
-        content: `<div style="padding:5px; text-align:center;">${market.marketName}</div>`,
-      });
+      // const infowindow = new kakao.maps.InfoWindow({
+      //   content: `<div style="padding:5px; text-align:center;">${market.marketName}</div>`,
+      // });
       if (this.markers.length > 0) {
         this.markers.forEach((item) => {
           item.setMap(null);
@@ -39,6 +39,9 @@ export default {
       }
 
       this.markets.forEach((market) => {
+        const infowindow = new kakao.maps.InfoWindow({
+          content: `<div style="padding:5px; text-align:center;">${market.marketName}</div>`,
+        });
         const marker = new kakao.maps.Marker({
           map: this.map,
           position: new kakao.maps.LatLng(market.lat, market.lng),
